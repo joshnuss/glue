@@ -15,3 +15,9 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 import socket from "./socket"
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './components/app'
+
+ReactDOM.render(<App/>, document.getElementById('app'))
