@@ -1,14 +1,5 @@
-import React, {useState} from 'react'
-
-function useCounter() {
-  const [count, set] = useState(0)
-
-  return {
-    count,
-    increment: () => set(count + 1),
-    decrement: () => set(count - 1)
-  }
-}
+import React from 'react'
+import useCounter from '../state/counter'
 
 export default function() {
   const {count, increment, decrement} = useCounter()
