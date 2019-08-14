@@ -3,6 +3,7 @@ defmodule PhxHooksWeb.UserSocket do
 
   ## Channels
   # channel "room:*", PhxHooksWeb.RoomChannel
+  channel "hook:*", PhxHooksWeb.HookChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
