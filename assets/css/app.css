@@ -1,7 +1,19 @@
 /* This file is for your main application css. */
 body {
+  margin: 0px;
   background-color: #278ab9;
   font-family: sans-serif;
+}
+
+header {
+  background: white;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: solid #a6caff 2px;
+}
+
+header img {
+  height: 2rem;
 }
 
 .counter {
