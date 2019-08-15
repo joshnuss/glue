@@ -2,13 +2,13 @@
 
 React is great at rendering HTML, but sharing state can be tricky.
 
-There is a technology that is really good at this - the [actor model](https://en.wikipedia.org/wiki/Actor_model) in Erlang (aka GenServers). It eats parallel shared state for breakfast.
+One technology that is great at shared state is the [Actor Model](https://en.wikipedia.org/wiki/Actor_model), in Erlang known as `GenServer`. It eats shared state for breakfast.
 
 That means you can skip writing Redux, hooks, GraphQL/REST wrappers and just write simple GenServer code, all the hooks are generated for you.
 
 ## Counter Example
 
-Here is what a simple counter looks like with React hooks:
+Let's take the example of a simple counter, this is what it looks like with React hooks:
 
 ```js
 import React, {useState} from 'react'
@@ -27,7 +27,7 @@ export default function() {
 }
 ```
 
-Instead of storing state in the local browser's memory with `useState()`, we can switch to server-side state by swapping to `useServerState()`: 
+Instead of storing state in the local browser's memory with `useState()`, we can switch to server-side state by simply swapping `useState()` to `useServerState()`: 
 
 ```js
 import React from 'react'
@@ -35,7 +35,7 @@ import useServerState from '../useServerState'
 
 export default function() {
   const {count, increment, decrement} = useServerState('counter')
-
+  
   return (
     <div className="counter">
       <button onClick={() => decrement()}>-</button>
@@ -49,7 +49,7 @@ export default function() {
 
 Now the state will first be queried from the the server. Any subsequent changes will be synced between all connected users.
 
-You just need to define a GenServer to handle the hold the state on the backend:
+You just need to define a `GenServer` to handle the hold the state on the backend:
 
 ```elixir
 defmodule Counter do
