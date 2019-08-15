@@ -1,6 +1,10 @@
 import React from 'react'
 import useServerState from '../useServerState'
 
+function randomNumber() {
+  return Math.floor(Math.random()*100)
+}
+
 export default function() {
   const {count, increment, decrement, update} = useServerState('counter')
 
@@ -11,7 +15,7 @@ export default function() {
 
       <h2>{count}</h2>
 
-      <a onClick={() => update(Math.floor(Math.random()*20))}>I'm feeling lucky!</a>
+      <a onClick={() => update(randomNumber())}>I'm feeling lucky!</a>
     </div>
   )
 }
