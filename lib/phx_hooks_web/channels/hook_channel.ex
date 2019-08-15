@@ -10,13 +10,13 @@ defmodule PhxHooksWeb.HookChannel do
     end
   end
 
-  def handle_in("get", payload, socket) do
+  def handle_in("counter:get", payload, socket) do
     value = Counter.get()
 
     {:reply, {:ok, %{value: value}}, socket}
   end
 
-  def handle_in("increment", payload, socket) do
+  def handle_in("counter:increment", payload, socket) do
     value = Counter.increment()
 
     broadcast_change(socket, value)
@@ -24,7 +24,7 @@ defmodule PhxHooksWeb.HookChannel do
     {:reply, {:ok, %{value: value}}, socket}
   end
 
-  def handle_in("decrement", payload, socket) do
+  def handle_in("counter:decrement", payload, socket) do
     value = Counter.decrement()
 
     broadcast_change(socket, value)
@@ -33,7 +33,7 @@ defmodule PhxHooksWeb.HookChannel do
   end
 
   defp broadcast_change(socket, value) do
-    broadcast_from!(socket, "changed", %{value: value})
+    broadcast_from!(socket, "counter:changed", %{value: value})
   end
 
   # Add authorization logic here as required.

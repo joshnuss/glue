@@ -14,10 +14,13 @@ import "phoenix_html"
 // Import local files
 //
 // Local files can be imported directly using relative paths, for example:
-import socket from "./socket"
-
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {init} from "./state/channel"
 import App from './components/App'
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+const element = document.getElementById('app')
+
+init()
+  .then(() => ReactDOM.render(<App/>, element))
+  .catch(error => console.log("Unable to join", error))
