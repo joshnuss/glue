@@ -27,7 +27,7 @@ export default function useServerState(actor) {
   operations[config.reader.label] = value
 
   config.calls.forEach(callName => {
-    operations[callName] = () => call(`${actor}:${callName}`).then(update)
+    operations[callName] = (...args) => call(`${actor}:${callName}`, ...args).then(update)
   })
 
   return operations

@@ -23,8 +23,8 @@ defmodule PhxHooksWeb.Generator do
           call_name = "#{key}:#{call}"
 
           quote do
-            def handle_in(unquote(call_name), _payload, socket) do
-              value = apply(unquote(config.mod), unquote(call), [])
+            def handle_in(unquote(call_name), payload, socket) do
+              value = apply(unquote(config.mod), unquote(call), payload["args"])
 
               broadcast_change(socket, value)
 
