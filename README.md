@@ -80,4 +80,4 @@ end
 Now you can share state across many machines quite easily.
 
 
-**Alpha code***
+**Alpha code**
