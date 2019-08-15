@@ -47,9 +47,9 @@ export default function() {
 }
 ```
 
-Now the state will first be queried from the the server. Any subsequent changes will be synced back to the server and then between all connected users over Websockets.
+The state will first be queried from the server. Subsequent changes will be synced back to the server and then between all connected users via Websockets.
 
-You just need to define a `GenServer` to hold the state in the backend:
+Now we just need to define a `GenServer` to hold the state in the backend:
 
 ```elixir
 defmodule Counter do
