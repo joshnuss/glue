@@ -2,9 +2,9 @@
 
 React is great at rendering HTML, but sharing state can be tricky.
 
-One technology that is great at shared state is the [Actor Model](https://en.wikipedia.org/wiki/Actor_model), known in Erlang  as `GenServer`. It eats shared state for breakfast.
+One technology that is designed for managing large amounts of shared state is the [Actor Model](https://en.wikipedia.org/wiki/Actor_model), known in Erlang as `GenServer`. 
 
-That means you can skip writing Redux, hooks and GraphQL/REST wrappers and just write GenServer code. The React hooks will be generated for you.
+By storing state in erlang, it means you can skip the boilerplate of writing Redux, hooks and GraphQL/REST wrappers and just write GenServer code. The React and Websocket code is generated for you.
 
 ## Counter Example
 
