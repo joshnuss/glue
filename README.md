@@ -27,7 +27,7 @@ export default function() {
 }
 ```
 
-Instead of `useState()`, we can swap it to use `useServerState()` instead: 
+Instead of storing state in the local browser's memory with `useState()`, we can switch to server-side state by swapping to `useServerState()`: 
 
 ```js
 import React from 'react'
@@ -47,7 +47,7 @@ export default function() {
 }
 ```
 
-Now the state will be queried from the the server. Any changes will be synced between all connected users.
+Now the state will first be queried from the the server. Any subsequent changes will be synced between all connected users.
 
 You just need to define a GenServer to handle the hold the state on the backend:
 
