@@ -72,4 +72,6 @@ end
 
 That's it! Just `GenServer`'s and pure JSX components.
 
+![Counter example](/counter-example.gif)
+
 ### This is alpha software.
