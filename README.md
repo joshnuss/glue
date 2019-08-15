@@ -8,7 +8,7 @@ That means you can skip writing redux, hooks, graphql/rest wrappers and just wri
 
 # Counter Example
 
-Here is what a simple shared counter looks like with React hooks
+Here is what a simple counter looks like with React hooks:
 
 ```js
 import React, {useState} from 'react'
@@ -27,7 +27,7 @@ export default function() {
 }
 ```
 
-Instead of `useState()`, we can switch it to use `useServerState()` instead. This will provide state management over sockets to your erlang cluster.
+Instead of `useState()`, we can swap it to use `useServerState()` instead: 
 
 ```js
 import React from 'react'
@@ -46,6 +46,8 @@ export default function() {
   )
 }
 ```
+
+Now the state is on the server and all users can share it!
 
 Just define a GenServer to handle the state on the backend:
 
@@ -77,7 +79,6 @@ defmodule Counter do
 end
 ```
 
-Now you can share state across many machines quite easily.
+No need to write socket code or redux or custom hooks. All you need are `GenServer`'s and pure JSX components.
 
-
------Alpha code-----
+This is alpha software.
