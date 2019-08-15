@@ -1,5 +1,6 @@
 defmodule PhxHooksWeb.HookChannel do
   use PhxHooksWeb, :channel
+  alias PhxHooks.Counter
 
   def join("hook:lobby", payload, socket) do
     if authorized?(payload) do

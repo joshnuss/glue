@@ -9,9 +9,8 @@ defmodule PhxHooks.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      PhxHooksWeb.Endpoint
-      # Starts a worker by calling: PhxHooks.Worker.start_link(arg)
-      # {PhxHooks.Worker, arg},
+      PhxHooksWeb.Endpoint,
+      PhxHooks.Counter
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
