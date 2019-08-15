@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {call, subscribe, unsubscribe} from './channel'
-import hooks from '../static/hooks.json'
+
+const hooks = JSON.parse(document.querySelector('script#hooks').innerHTML)
 
 export default function useServerState(actor) {
   const config = hooks[actor]
@@ -14,7 +15,7 @@ export default function useServerState(actor) {
   const update = ({value: change}) => set(change)
 
   useEffect(() => {
-    call(`${actor}:${config.reader.actionName}`).then(update)
+    call(`${actor}:${config.reader.action}`).then(update)
 
     const ref = subscribe(`${actor}:changed`, update)
 
@@ -23,7 +24,7 @@ export default function useServerState(actor) {
 
   const operations = {}
 
-  operations[config.reader.varName] = value
+  operations[config.reader.label] = value
 
   config.calls.forEach(callName => {
     operations[callName] = () => call(`${actor}:${callName}`).then(update)
