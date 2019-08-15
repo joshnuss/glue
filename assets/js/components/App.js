@@ -1,8 +1,8 @@
 import React from 'react'
-import useCounter from '../state/counter'
+import useServerState from '../useServerState'
 
 export default function() {
-  const {count, increment, decrement} = useCounter()
+  const {count, increment, decrement} = useServerState('counter')
 
   return (
     <div className="counter">

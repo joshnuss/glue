@@ -16,7 +16,7 @@ import "phoenix_html"
 // Local files can be imported directly using relative paths, for example:
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {init} from "./state/channel"
+import {init} from "./channel"
 import App from './components/App'
 
 const element = document.getElementById('app')

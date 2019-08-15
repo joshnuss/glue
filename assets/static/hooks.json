@@ -1,0 +1,9 @@
+{
+  "counter": {
+    "reader": {
+      "actionName": "get",
+      "varName": "count"
+    },
+    "calls": ["increment", "decrement"]
+  }
+}
