@@ -4,7 +4,7 @@ React is great at rendering HTML, but sharing state can be tricky.
 
 There is a technology that is really good at this - the [actor model](https://en.wikipedia.org/wiki/Actor_model) in Erlang (aka GenServers). They eat massively parallel shared state for breakfast.
 
-That means you can skip writing redux, hooks, graphql/rest wrappers and just write simple GenServer code, all the hooks are generated for you.
+That means you can skip writing Redux, hooks, GraphQL/REST wrappers and just write simple GenServer code, all the hooks are generated for you.
 
 # Counter Example
 
@@ -47,9 +47,9 @@ export default function() {
 }
 ```
 
-Now the state is on the server and all users can share it!
+Now the state will be queried from the the server. Any changes will be synced between all connected users.
 
-Just define a GenServer to handle the state on the backend:
+You just need to define a GenServer to handle the hold the state on the backend:
 
 ```elixir
 defmodule Counter do
@@ -79,6 +79,6 @@ defmodule Counter do
 end
 ```
 
-No need to write socket code or redux or custom hooks. All you need are `GenServer`'s and pure JSX components.
+That's it! All you need is `GenServer`'s and pure JSX components.
 
 This is alpha software.
