@@ -1,4 +1,4 @@
-# Managing server-side state with React & Phoenix
+# Easy server-side state with React & Phoenix
 
 React is great at rendering HTML, but sharing state can be tricky.
 
@@ -6,7 +6,7 @@ There is a technology that is really good at this - the [actor model](https://en
 
 That means you can skip writing Redux, hooks, GraphQL/REST wrappers and just write simple GenServer code, all the hooks are generated for you.
 
-# Counter Example
+## Counter Example
 
 Here is what a simple counter looks like with React hooks:
 
@@ -81,4 +81,4 @@ end
 
 That's it! All you need is `GenServer`'s and pure JSX components.
 
-This is alpha software.
+### This is alpha software.
