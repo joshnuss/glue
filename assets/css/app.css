@@ -3,6 +3,7 @@ body {
   margin: 0px;
   background-color: #278ab9;
   font-family: sans-serif;
+  font-size: 2em;
 }
 
 header {
@@ -54,4 +55,12 @@ header img {
 }
 .counter .increment {
   float: right;
+}
+
+a {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
 }
