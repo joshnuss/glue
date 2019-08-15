@@ -10,17 +10,30 @@ defmodule PhxHooksWeb.HookChannel do
     end
   end
 
-  # Channels can be used in a request/response fashion
-  # by sending replies to requests from the client
-  def handle_in("ping", payload, socket) do
-    {:reply, {:ok, payload}, socket}
+  def handle_in("get", payload, socket) do
+    value = Counter.get()
+
+    {:reply, {:ok, %{value: value}}, socket}
   end
 
-  # It is also common to receive messages from the client and
-  # broadcast to everyone in the current topic (hook:lobby).
-  def handle_in("shout", payload, socket) do
-    broadcast socket, "shout", payload
-    {:noreply, socket}
+  def handle_in("increment", payload, socket) do
+    value = Counter.increment()
+
+    broadcast_change(socket, value)
+
+    {:reply, {:ok, %{value: value}}, socket}
+  end
+
+  def handle_in("decrement", payload, socket) do
+    value = Counter.decrement()
+
+    broadcast_change(socket, value)
+
+    {:reply, {:ok, %{value: value}}, socket}
+  end
+
+  defp broadcast_change(socket, value) do
+    broadcast_from!(socket, "changed", %{value: value})
   end
 
   # Add authorization logic here as required.
