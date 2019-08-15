@@ -57,21 +57,12 @@ defmodule Counter do
 
   @name :counter
 
-  def start_link(_opts) do
-    Agent.start_link(fn -> 0 end, name: @name)
-  end
+  def start_link(_opts),
+    do: Agent.start_link(fn -> 0 end, name: @name)
 
-  def get() do
-    Agent.get(@name, & &1)
-  end
-
-  def increment() do
-    apply(+1)
-  end
-
-  def decrement() do
-    apply(-1)
-  end
+  def get(), do: Agent.get(@name, & &1)
+  def increment(), do: apply(+1)
+  def decrement(), do: apply(-1)
 
   defp apply(delta) do
     Agent.get_and_update(@name, &{&1 + delta, &1 + delta})
