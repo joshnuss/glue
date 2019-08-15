@@ -1,6 +1,6 @@
 defmodule PhxHooksWeb.HookChannel do
   use PhxHooksWeb, :channel
-  alias PhxHooks.Counter
+  import PhxHooksWeb.Generator
 
   def join("hook:lobby", payload, socket) do
     if authorized?(payload) do
@@ -10,31 +10,7 @@ defmodule PhxHooksWeb.HookChannel do
     end
   end
 
-  def handle_in("counter:get", payload, socket) do
-    value = Counter.get()
-
-    {:reply, {:ok, %{value: value}}, socket}
-  end
-
-  def handle_in("counter:increment", payload, socket) do
-    value = Counter.increment()
-
-    broadcast_change(socket, value)
-
-    {:reply, {:ok, %{value: value}}, socket}
-  end
-
-  def handle_in("counter:decrement", payload, socket) do
-    value = Counter.decrement()
-
-    broadcast_change(socket, value)
-
-    {:reply, {:ok, %{value: value}}, socket}
-  end
-
-  defp broadcast_change(socket, value) do
-    broadcast_from!(socket, "counter:changed", %{value: value})
-  end
+  generate_hooks()
 
   # Add authorization logic here as required.
   defp authorized?(_payload) do
