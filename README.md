@@ -1,4 +1,4 @@
-# Phoenix + React + GenServers + Sockets + Generated hooks
+# Managing server-side state with React & Phoenix
 
 React is great at rendering HTML, but sharing state can be tricky.
 
