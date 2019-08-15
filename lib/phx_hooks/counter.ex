@@ -12,14 +12,18 @@ defmodule PhxHooks.Counter do
   end
 
   def increment() do
-    apply(+1)
+    apply(&(&1 + 1))
   end
 
   def decrement() do
-    apply(-1)
+    apply(&(&1 - 1))
   end
 
-  defp apply(delta) do
-    Agent.get_and_update(@name, &{&1 + delta, &1 + delta})
+  def update(value) do
+    apply(fn _ -> value end)
+  end
+
+  defp apply(fun) do
+    Agent.get_and_update(@name, &{fun.(&1), fun.(&1)})
   end
 end

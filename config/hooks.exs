@@ -7,6 +7,6 @@ config :phx_hooks, :hooks, %{
       action: :get,
       label: :count
     },
-    calls: [:increment, :decrement]
+    calls: [:increment, :decrement, :update]
   }
 }
