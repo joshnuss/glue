@@ -3,7 +3,16 @@ import {call, subscribe, unsubscribe} from './channel'
 
 const hooks = JSON.parse(document.querySelector('script#hooks').innerHTML)
 
-export default function useServerState(actor) {
+function parseKeys(options) {
+  const key = options['key']
+
+  if (!key) return []
+  if (Array.isArray(key)) return key
+
+  return [key]
+}
+
+export default function useServerState(actor, options={}) {
   const config = hooks[actor]
 
   if (!config) {
@@ -12,12 +21,13 @@ export default function useServerState(actor) {
   }
 
   const {access, calls} = config
+  const keys = parseKeys(options)
   const label = access['label'] || access.action
   const [value, set] = useState(access.default)
   const update = ({value: change}) => set(change)
 
   useEffect(() => {
-    call(`${actor}:${access.action}`).then(update)
+    call(`${actor}:${access.action}`, ...keys).then(update)
 
     const ref = subscribe(`${actor}:changed`, update)
 
@@ -29,7 +39,7 @@ export default function useServerState(actor) {
   operations[label] = value
 
   calls.forEach(callName => {
-    operations[callName] = (...args) => call(`${actor}:${callName}`, ...args).then(update)
+    operations[callName] = (...args) => call(`${actor}:${callName}`, ...keys, ...args).then(update)
   })
 
   return operations

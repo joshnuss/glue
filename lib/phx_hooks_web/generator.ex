@@ -7,8 +7,8 @@ defmodule PhxHooksWeb.Generator do
 
       base =
         quote do
-          def handle_in(unquote(access_name), _payload, socket) do
-            value = apply(unquote(config.mod), unquote(config.access.action), [])
+          def handle_in(unquote(access_name), payload, socket) do
+            value = apply(unquote(config.mod), unquote(config.access.action), payload["args"])
 
             {:reply, {:ok, %{value: value}}, socket}
           end
