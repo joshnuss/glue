@@ -3,10 +3,10 @@ use Mix.Config
 config :phx_hooks, :hooks, %{
   counter: %{
     mod: PhxHooks.Counter,
-    reader: %{
-      default: "...",
+    access: %{
       action: :get,
-      label: :count
+      label: :count,
+      default: "..."
     },
     calls: [:increment, :decrement, :update]
   }

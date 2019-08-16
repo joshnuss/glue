@@ -11,12 +11,12 @@ export default function useServerState(actor) {
     return
   }
 
-  const {reader, calls} = config
-  const [value, set] = useState(reader.default)
+  const {access, calls} = config
+  const [value, set] = useState(access.default)
   const update = ({value: change}) => set(change)
 
   useEffect(() => {
-    call(`${actor}:${reader.action}`).then(update)
+    call(`${actor}:${access.action}`).then(update)
 
     const ref = subscribe(`${actor}:changed`, update)
 
@@ -25,7 +25,7 @@ export default function useServerState(actor) {
 
   const operations = {}
 
-  operations[reader.label] = value
+  operations[access.label] = value
 
   calls.forEach(callName => {
     operations[callName] = (...args) => call(`${actor}:${callName}`, ...args).then(update)

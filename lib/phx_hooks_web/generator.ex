@@ -3,12 +3,12 @@ defmodule PhxHooksWeb.Generator do
     hooks = Application.get_env(:phx_hooks, :hooks)
 
     Enum.map(hooks, fn {key, config} ->
-      reader_name = "#{key}:#{config.reader.action}"
+      access_name = "#{key}:#{config.access.action}"
 
       base =
         quote do
-          def handle_in(unquote(reader_name), _payload, socket) do
-            value = apply(unquote(config.mod), unquote(config.reader.action), [])
+          def handle_in(unquote(access_name), _payload, socket) do
+            value = apply(unquote(config.mod), unquote(config.access.action), [])
 
             {:reply, {:ok, %{value: value}}, socket}
           end

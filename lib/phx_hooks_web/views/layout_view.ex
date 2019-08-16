@@ -8,7 +8,7 @@ defmodule PhxHooksWeb.LayoutView do
     |> Enum.map(fn {k, v} ->
       {k,
        %{
-         reader: v.reader,
+         access: v.access,
          calls: v.calls
        }}
     end)
