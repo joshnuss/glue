@@ -17,21 +17,25 @@ header img {
   height: 2rem;
 }
 
-.counter {
-  margin: 0 6em;
-  max-width: 700px;
+.counter-wrapper {
+  text-align: center
 }
 
-.counter h2 {
-  font-size: 10rem;
+.counter {
+  margin: 0 6rem;
+  max-width: 700px;
   background-color: white;
   text-align: center;
   border-radius: 1rem
 }
 
+.counter h2 {
+  font-size: 8rem;
+}
+
 .counter button {
   cursor: pointer;
-  margin: 3.5rem 2rem;
+  margin: 2.5rem 2rem;
   background: #44a9ff;
   font-size: 2rem;
   border-radius: 50%;
@@ -66,6 +70,22 @@ a:hover {
 }
 
 .github-ribbon {
-  position: fixed;
+  position: absolute;
   right: 0px
+}
+
+@media only screen and (max-width: 600px) {
+  .counter {
+    margin: 0 1rem;
+  }
+
+  .counter h2 {
+    font-size: 4rem;
+  }
+
+  .counter button {
+    margin: 1rem 2rem;
+    height: 3rem;
+    width: 3rem;
+  }
 }
