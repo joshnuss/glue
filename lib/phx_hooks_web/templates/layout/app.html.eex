@@ -21,6 +21,9 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
+
+    <%= render "analytics.html" %>
+
     <script id="hooks" type="application/json"><%= hooks_config() %></script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
