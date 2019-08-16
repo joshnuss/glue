@@ -6,6 +6,8 @@ One technology that is designed for managing large amounts of shared state is th
 
 By relying on Erlang for state management, it frees us from needing to write boilerplate Redux, hooks and/or GraphQL/REST wrappers and just write GenServer code. The React hooks and Websocket code is then generated for you.
 
+[View live demo](http://react-use-server-state.gigalixirapp.com/)
+
 ## Counter Example
 
 Let's take the example of a simple counter. This is what it looks like with React's `useState()` hook:
