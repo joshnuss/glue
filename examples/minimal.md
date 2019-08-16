@@ -33,7 +33,7 @@ config :my_app, :hooks, %{
 
 ## Client side
 
-Retreive the state with `useServerState()` hook.
+Now we can retreive the state with the `useServerState()` hook.
 
 ```javascript
 // in src/components/Magic.js
