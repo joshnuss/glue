@@ -9,7 +9,7 @@ defmodule PhxHooksWeb.LayoutView do
       {k,
        %{
          access: v.access,
-         calls: v.calls
+         calls: v[:calls] || []
        }}
     end)
     |> Enum.into(%{})

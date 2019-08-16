@@ -19,7 +19,7 @@ defmodule PhxHooksWeb.Generator do
         end
 
       calls =
-        Enum.map(config.calls, fn call ->
+        Enum.map(config[:calls] || [], fn call ->
           call_name = "#{key}:#{call}"
 
           quote do
