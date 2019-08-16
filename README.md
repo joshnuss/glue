@@ -8,7 +8,7 @@ By relying on Erlang for state management, it frees us from needing to write boi
 
 ## Counter Example
 
-Let's take the example of a simple counter. This is what it looks like with React hooks:
+Let's take the example of a simple counter. This is what it looks like with React's `useState()` hook:
 
 ```js
 import React, {useState} from 'react'
