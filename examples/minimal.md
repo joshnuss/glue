@@ -10,6 +10,7 @@ All you need is a module:
 # in lib/magic.ex
 
 defmodule Magic do
+  # read-only value
   def value, do: 42
 end
 ```
@@ -34,7 +35,7 @@ config :my_app, :hooks, %{
 
 ## Client side
 
-Retreive the state via `useServerState('magic')`
+Retreive the state with `useServerState()` hook.
 
 ```javascript
 # in src/components/Magic.js
