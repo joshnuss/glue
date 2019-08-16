@@ -12,6 +12,7 @@ export default function useServerState(actor) {
   }
 
   const {access, calls} = config
+  const label = access['label'] || access.action
   const [value, set] = useState(access.default)
   const update = ({value: change}) => set(change)
 
@@ -25,7 +26,7 @@ export default function useServerState(actor) {
 
   const operations = {}
 
-  operations[access.label] = value
+  operations[label] = value
 
   calls.forEach(callName => {
     operations[callName] = (...args) => call(`${actor}:${callName}`, ...args).then(update)
