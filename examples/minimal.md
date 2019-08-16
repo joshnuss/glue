@@ -8,7 +8,6 @@ All you need is a module:
 
 ```elixir
 # in lib/magic.ex
-
 defmodule Magic do
   # read-only value
   def value, do: 42
@@ -19,7 +18,6 @@ Make the hook public:
 
 ```elixir
 # in config/hooks.ex
-
 config :my_app, :hooks, %{
   # `magic` is the name of the hook
   magic: %{
@@ -38,11 +36,10 @@ config :my_app, :hooks, %{
 Retreive the state with `useServerState()` hook.
 
 ```javascript
-# in src/components/Magic.js
-import React from 'react'
-import {useServerState} from 'react-server-state'
+// in src/components/Magic.js
+import {useServerState} from '..'
 
-export default function() {
+export default () => {
   const {value} = useServerState('magic')
 
   return <h1>{value}</h1>
