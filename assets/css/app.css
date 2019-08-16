@@ -64,3 +64,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.github-ribbon {
+  position: fixed;
+  right: 0px
+}
