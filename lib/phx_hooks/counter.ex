@@ -7,23 +7,12 @@ defmodule PhxHooks.Counter do
     Agent.start_link(fn -> 0 end, name: @name)
   end
 
-  def get() do
-    Agent.get(@name, & &1)
-  end
+  def get, do: Agent.get(@name, & &1)
+  def increment, do: change(&(&1 + 1))
+  def decrement, do: change(&(&1 - 1))
+  def update(value), do: change(fn _ -> value end)
 
-  def increment() do
-    apply(&(&1 + 1))
-  end
-
-  def decrement() do
-    apply(&(&1 - 1))
-  end
-
-  def update(value) do
-    apply(fn _ -> value end)
-  end
-
-  defp apply(fun) do
+  defp change(fun) do
     Agent.get_and_update(@name, &{fun.(&1), fun.(&1)})
   end
 end
