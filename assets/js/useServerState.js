@@ -32,7 +32,7 @@ export default function useServerState(actor, options={}) {
     const ref = subscribe(`${actor}:changed`, update)
 
     return () => unsubscribe(`${actor}:changed`, ref)
-  })
+  }, [actor])
 
   const operations = {}
 
