@@ -17,10 +17,10 @@ import "phoenix_html"
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {init} from "./channel"
-import App from './components/App'
+import Counter from './components/Counter'
 
 const element = document.getElementById('app')
 
 init()
-  .then(() => ReactDOM.render(<App/>, element))
+  .then(() => ReactDOM.render(<Counter/>, element))
   .catch(error => console.log("Unable to join", error))
