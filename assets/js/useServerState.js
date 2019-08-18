@@ -24,7 +24,7 @@ export default function useServerState(actor, options={}) {
   const keys = parseKeys(options)
   const label = access['label'] || access.action
   const [value, set] = useState(access.default)
-  const update = ({value: change}) => set(change)
+  const update = ({state}) => set(state)
 
   useEffect(() => {
     call(`${actor}:${access.action}`, ...keys).then(update)
@@ -41,6 +41,10 @@ export default function useServerState(actor, options={}) {
   calls.forEach(callName => {
     operations[callName] = async (...args) => {
       const result = await call(`${actor}:${callName}`, ...keys, ...args)
+
+      if (!result.success) {
+        throw Error(result.value)
+      }
 
       update(result)
 

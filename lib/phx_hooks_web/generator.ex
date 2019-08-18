@@ -10,11 +10,22 @@ defmodule PhxHooksWeb.Generator do
           def handle_in(unquote(access_name), payload, socket) do
             value = apply(unquote(config.mod), unquote(config.access.action), payload["args"])
 
-            {:reply, {:ok, %{value: value}}, socket}
+            result = extract_result(value)
+
+            {:reply, {:ok, result}, socket}
           end
 
           defp broadcast_change(socket, value) do
             broadcast_from!(socket, "#{unquote(key)}:changed", %{value: value})
+          end
+
+          defp extract_result(value) do
+            case value do
+              {:ok, x} -> %{success: true, value: x, state: x}
+              {:ok, x, state} -> %{success: true, value: x, state: x}
+              {:error, x} -> %{success: false, value: x}
+              x -> %{success: true, value: x, state: x}
+            end
           end
         end
 
@@ -26,9 +37,13 @@ defmodule PhxHooksWeb.Generator do
             def handle_in(unquote(call_name), payload, socket) do
               value = apply(unquote(config.mod), unquote(call), payload["args"])
 
-              broadcast_change(socket, value)
+              result = extract_result(value)
 
-              {:reply, {:ok, %{value: value}}, socket}
+              if result.success do
+                broadcast_change(socket, result.state)
+              end
+
+              {:reply, {:ok, result}, socket}
             end
           end
         end)
