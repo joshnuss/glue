@@ -15,8 +15,8 @@ defmodule PhxHooksWeb.Generator do
             {:reply, {:ok, result}, socket}
           end
 
-          defp broadcast_change(socket, value) do
-            broadcast_from!(socket, "#{unquote(key)}:changed", %{value: value})
+          defp broadcast_change(socket, state) do
+            broadcast_from!(socket, "#{unquote(key)}:changed", %{state: state})
           end
 
           defp extract_result(value) do
