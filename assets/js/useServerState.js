@@ -39,7 +39,13 @@ export default function useServerState(actor, options={}) {
   operations[label] = value
 
   calls.forEach(callName => {
-    operations[callName] = (...args) => call(`${actor}:${callName}`, ...keys, ...args).then(update)
+    operations[callName] = async (...args) => {
+      const result = await call(`${actor}:${callName}`, ...keys, ...args)
+
+      update(result)
+
+      return result.value
+    }
   })
 
   return operations
