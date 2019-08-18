@@ -29,9 +29,11 @@ export default function useServerState(actor, options={}) {
   useEffect(() => {
     call(`${actor}:${access.action}`, ...keys).then(update)
 
-    const ref = subscribe(`${actor}:changed`, update)
+    if (options.sync) {
+      const ref = subscribe(`${actor}:changed`, update)
 
-    return () => unsubscribe(`${actor}:changed`, ref)
+      return () => unsubscribe(`${actor}:changed`, ref)
+    }
   }, [actor])
 
   const operations = {}

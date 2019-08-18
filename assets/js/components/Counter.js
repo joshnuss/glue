@@ -6,7 +6,7 @@ function randomNumber() {
 }
 
 export default function() {
-  const {count, increment, decrement, update} = useServerState('counter')
+  const {count, increment, decrement, update} = useServerState('counter', {sync: true})
 
   return (
     <div className="counter">

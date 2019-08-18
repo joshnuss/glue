@@ -36,7 +36,7 @@ import React from 'react'
 import useServerState from '../useServerState'
 
 export default function() {
-  const {count, increment, decrement} = useServerState('counter')
+  const {count, increment, decrement} = useServerState('counter', {sync: true})
   
   return (
     <div className="counter">
