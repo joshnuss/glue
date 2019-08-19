@@ -172,6 +172,9 @@ a:hover {
   width: 100%;
 
 }
+#dictionary-app tr:hover {
+  background: #d9fdca;
+}
 #dictionary-app button.remove {
   color: #c00;
   opacity: 0.3;
