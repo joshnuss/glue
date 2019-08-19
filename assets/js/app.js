@@ -19,8 +19,12 @@ import ReactDOM from 'react-dom'
 import {init} from './channel'
 import Counter from './components/Counter'
 
-const element = document.getElementById('app')
-
 init()
-  .then(() => ReactDOM.render(<Counter/>, element))
+  .then(() => {
+    const counterApp = document.getElementById('counter-app')
+
+    if (counterApp) {
+      ReactDOM.render(<Counter/>, counterApp)
+    }
+  })
   .catch(error => console.log('Unable to join', error))

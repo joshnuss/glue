@@ -17,6 +17,11 @@ header img {
   height: 2rem;
 }
 
+h1 {
+  text-align: center;
+  color: white;
+}
+
 a {
   cursor: pointer;
 }
@@ -30,7 +35,15 @@ a:hover {
   right: 0px
 }
 
+#demo-list {
+  text-align: center;
+}
+#demo-list nav a {
+  display: block
+}
+
 .counter {
+  color: black;
   background-color: white;
   border-radius: 1rem;
   margin: 2rem 10rem;

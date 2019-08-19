@@ -1,1 +1,6 @@
-<div id="app"/>
+<article id="demo-list">
+  <h1>Demos</h1>
+  <nav>
+    <a href="/demos/counter">Counter</a>
+  </nav>
+</article>
