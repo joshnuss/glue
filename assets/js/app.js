@@ -20,18 +20,19 @@ import {init} from './channel'
 import Counter from './components/Counter'
 import Value from './components/Value'
 
+const apps = {
+  "counter-app": Counter,
+  "read-only-app": Value
+}
+
 init()
   .then(() => {
-    const counterApp = document.getElementById('counter-app')
+    Object.entries(apps).forEach(([id, Component]) => {
+      const element = document.getElementById(id)
 
-    if (counterApp) {
-      ReactDOM.render(<Counter/>, counterApp)
-    }
-
-    const readOnlyApp = document.getElementById('read-only-app')
-
-    if (readOnlyApp) {
-      ReactDOM.render(<Value/>, readOnlyApp)
-    }
+      if (element) {
+        ReactDOM.render(<Component/>, element)
+      }
+    })
   })
   .catch(error => console.log('Unable to join', error))
