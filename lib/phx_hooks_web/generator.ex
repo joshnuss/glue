@@ -8,15 +8,21 @@ defmodule PhxHooksWeb.Generator do
       base =
         quote do
           def handle_in(unquote(access_name), payload, socket) do
-            value = apply(unquote(config.mod), unquote(config.access.action), payload["args"])
+            value =
+              apply(
+                unquote(config.mod),
+                unquote(config.access.action),
+                payload["keys"] ++ payload["args"]
+              )
 
             result = extract_result(value)
 
             {:reply, {:ok, result}, socket}
           end
 
-          defp broadcast_change(socket, state) do
-            broadcast_from!(socket, "#{unquote(key)}:changed", %{state: state})
+          defp broadcast_change(socket, keys, state) do
+            ids = Enum.join(keys, ":")
+            broadcast_from!(socket, "#{unquote(key)}:changed:#{ids}", %{state: state})
           end
 
           defp extract_result(value) do
@@ -35,12 +41,13 @@ defmodule PhxHooksWeb.Generator do
 
           quote do
             def handle_in(unquote(call_name), payload, socket) do
-              value = apply(unquote(config.mod), unquote(call), payload["args"])
+              keys = payload["keys"]
+              value = apply(unquote(config.mod), unquote(call), keys ++ payload["args"])
 
               result = extract_result(value)
 
               if result.success do
-                broadcast_change(socket, result.state)
+                broadcast_change(socket, keys, result.state)
               end
 
               {:reply, {:ok, result}, socket}

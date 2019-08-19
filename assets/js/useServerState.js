@@ -27,12 +27,13 @@ export default function useServerState(actor, options={}) {
   const update = ({state}) => set(state)
 
   useEffect(() => {
-    call(`${actor}:${access.action}`, ...keys).then(update)
+    call(`${actor}:${access.action}`, keys).then(update)
 
     if (options.sync) {
-      const ref = subscribe(`${actor}:changed`, update)
+      const eventName = `${actor}:changed:${keys.join(':')}`
+      const ref = subscribe(eventName, update)
 
-      return () => unsubscribe(`${actor}:changed`, ref)
+      return () => unsubscribe(eventName, ref)
     }
   }, [actor])
 
@@ -42,7 +43,7 @@ export default function useServerState(actor, options={}) {
 
   calls.forEach(callName => {
     operations[callName] = async (...args) => {
-      const result = await call(`${actor}:${callName}`, ...keys, ...args)
+      const result = await call(`${actor}:${callName}`, keys, args)
 
       if (!result.success) {
         throw Error(result.value)

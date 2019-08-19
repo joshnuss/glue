@@ -21,9 +21,9 @@ export function unsubscribe(name, ref) {
   channel.off(name, ref)
 }
 
-export function call(name, ...args) {
+export function call(name, keys, args=[]) {
   return new Promise((resolve, reject) => {
-    channel.push(name, {args})
+    channel.push(name, {keys, args})
         .receive("ok", resolve)
         .receive("timeout", () => {
           console.error(`call to ${name} timed out`)
