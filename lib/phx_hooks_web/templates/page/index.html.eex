@@ -3,5 +3,6 @@
   <nav>
     <a href="/demos/read-only">Read-only</a>
     <a href="/demos/counter">Counter</a>
+    <a href="/demos/dictionary">Dictionary</a>
   </nav>
 </article>

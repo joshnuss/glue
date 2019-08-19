@@ -15,5 +15,13 @@ config :phx_hooks, :hooks, %{
       default: "..."
     },
     calls: [:increment, :decrement, :update]
+  },
+  dictionary: %{
+    mod: PhxHooks.Dictionary,
+    access: %{
+      action: :value,
+      default: %{}
+    },
+    calls: [:put, :get, :del, :clear]
   }
 }

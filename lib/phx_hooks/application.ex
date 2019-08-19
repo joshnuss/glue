@@ -10,7 +10,8 @@ defmodule PhxHooks.Application do
     children = [
       # Start the endpoint when the application starts
       PhxHooksWeb.Endpoint,
-      PhxHooks.Counter
+      PhxHooks.Counter,
+      PhxHooks.Dictionary
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

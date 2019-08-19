@@ -19,10 +19,12 @@ import ReactDOM from 'react-dom'
 import {init} from './channel'
 import Counter from './components/Counter'
 import Value from './components/Value'
+import Dictionary from './components/Dictionary'
 
 const apps = {
   "counter-app": Counter,
-  "read-only-app": Value
+  "read-only-app": Value,
+  "dictionary-app": Dictionary
 }
 
 init()

@@ -23,7 +23,7 @@ h1 {
   color: white;
 }
 
-a {
+a, button {
   cursor: pointer;
 }
 
@@ -115,4 +115,75 @@ a:hover {
 #read-only-app h2 {
   text-align: center;
   font-size: 10rem;
+}
+
+#dictionary-app table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#dictionary-app table, th, td {
+  border: 2px solid #777;
+  padding: 1rem;
+}
+#dictionary-app table th {
+  background: #ccc;
+}
+#dictionary-app table tr.add {
+  background: #278ab9;
+}
+
+#dictionary-app input {
+  background: transparent;
+  color: #333;
+  border: none;
+  outline: none;
+  border-bottom: dotted 2px #aaa;
+  font-size: 2rem;
+  width: 100%;
+}
+
+#dictionary-app ::placeholder {
+  color: #ccc;
+}
+
+#dictionary-app pre {
+  background: #278ab9;
+  color: #eee;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+#dictionary-app .dictionary {
+  margin: 0 20rem;
+  padding: 5rem;
+  background: white;
+  border-radius: 1rem;
+}
+#dictionary-app button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  line-height: 0.8rem;
+  display: block;
+  height: 100%;
+  width: 100%;
+
+}
+#dictionary-app button.remove {
+  color: #c00;
+  opacity: 0.3;
+}
+#dictionary-app tr:hover button.remove {
+  opacity: 1;
+}
+#dictionary-app button.add {
+  color: white;
+}
+@media only screen and (max-width: 1000px) {
+  #dictionary-app .dictionary {
+    margin: 0 3rem;
+  }
 }
