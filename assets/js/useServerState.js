@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {call, subscribe, unsubscribe} from './channel'
 
 const hooks = JSON.parse(document.querySelector('script#hooks').innerHTML)
+const actors = new Map()
 
 function parseKeys(options) {
   const key = options['key']
@@ -12,8 +13,51 @@ function parseKeys(options) {
   return [key]
 }
 
-export default function useServerState(actor, options={}) {
-  const config = hooks[actor]
+function getOrCreateActor(actorName, keys, config, options) {
+  const {access} = config
+  const fullName = [actorName, ...keys]
+  const eventName = `${actorName}:changed:${keys.join(':')}`
+  let actor = actors[fullName]
+
+  if (actor) return actor
+
+  actor = {
+    value: access.default,
+    sync: options.sync,
+    listeners: [],
+    subscription: null,
+    addListener(callback) {
+      this.listeners.push(callback)
+
+      if (this.sync && !this.subscription) {
+        this.subscription = subscribe(eventName, ({state}) => this.update(state))
+      }
+
+      callback(this.value)
+    },
+    removeListener(callback) {
+      const index = this.listeners.indexOf(callback)
+      if (index) this.listeners.splice(index, 1)
+
+      if (this.sync && this.listeners.length === 0) {
+        unsubscribe(eventName, this.subscription)
+      }
+    },
+    update(newValue) {
+      this.value = newValue
+      this.listeners.forEach(cb => cb(newValue))
+    }
+  }
+
+  actors[fullName] = actor
+
+  call(`${actorName}:${access.action}`, keys).then(({state}) => actor.update(state))
+
+  return actor
+}
+
+export default function useServerState(actorName, options={}) {
+  const config = hooks[actorName]
 
   if (!config) {
     console.error(`Hook not defined in config/hooks.exs for ${name}`)
@@ -23,19 +67,16 @@ export default function useServerState(actor, options={}) {
   const {access, calls} = config
   const keys = parseKeys(options)
   const label = access['label'] || access.action
-  const [value, set] = useState(access.default)
-  const update = ({state}) => set(state)
+  const actor = getOrCreateActor(actorName, keys, config, options)
+  const [value, set] = useState(actor.value)
 
   useEffect(() => {
-    call(`${actor}:${access.action}`, keys).then(update)
-
     if (options.sync) {
-      const eventName = `${actor}:changed:${keys.join(':')}`
-      const ref = subscribe(eventName, update)
+      actor.addListener(set)
 
-      return () => unsubscribe(eventName, ref)
+      return () => actor.removeListener(set)
     }
-  }, [actor])
+  }, [actorName])
 
   const operations = {}
 
@@ -43,13 +84,13 @@ export default function useServerState(actor, options={}) {
 
   calls.forEach(callName => {
     operations[callName] = async (...args) => {
-      const result = await call(`${actor}:${callName}`, keys, args)
+      const result = await call(`${actorName}:${callName}`, keys, args)
 
       if (!result.success) {
         throw Error(result.value)
       }
 
-      update(result)
+      actor.update(result.state)
 
       return result.value
     }
