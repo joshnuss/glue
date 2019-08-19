@@ -18,6 +18,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {init} from './channel'
 import Counter from './components/Counter'
+import Value from './components/Value'
 
 init()
   .then(() => {
@@ -25,6 +26,12 @@ init()
 
     if (counterApp) {
       ReactDOM.render(<Counter/>, counterApp)
+    }
+
+    const readOnlyApp = document.getElementById('read-only-app')
+
+    if (readOnlyApp) {
+      ReactDOM.render(<Value/>, readOnlyApp)
     }
   })
   .catch(error => console.log('Unable to join', error))

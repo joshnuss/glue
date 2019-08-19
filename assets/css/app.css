@@ -110,3 +110,8 @@ a:hover {
     font-size: 2rem;
   }
 }
+
+#read-only-app h2 {
+  text-align: center;
+  font-size: 10rem;
+}
