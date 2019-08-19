@@ -20,9 +20,9 @@ defmodule PhxHooksWeb.Generator do
             {:reply, {:ok, result}, socket}
           end
 
-          defp broadcast_change(socket, keys, state) do
+          defp broadcast_change(socket, key, keys, state) do
             ids = Enum.join(keys, ":")
-            broadcast_from!(socket, "#{unquote(key)}:changed:#{ids}", %{state: state})
+            broadcast_from!(socket, "#{key}:changed:#{ids}", %{state: state})
           end
 
           defp extract_result(value) do
@@ -47,7 +47,7 @@ defmodule PhxHooksWeb.Generator do
               result = extract_result(value)
 
               if result.success do
-                broadcast_change(socket, keys, result.state)
+                broadcast_change(socket, unquote(key), keys, result.state)
               end
 
               {:reply, {:ok, result}, socket}
