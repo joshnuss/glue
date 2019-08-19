@@ -71,11 +71,9 @@ export default function useServerState(actorName, options={}) {
   const [value, set] = useState(actor.value)
 
   useEffect(() => {
-    if (options.sync) {
-      actor.addListener(set)
+    actor.addListener(set)
 
-      return () => actor.removeListener(set)
-    }
+    return () => actor.removeListener(set)
   }, [actorName])
 
   const operations = {}
