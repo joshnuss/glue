@@ -37,7 +37,7 @@ Now we can retreive the state with the `useServerState()` hook.
 
 ```javascript
 // in src/components/Magic.js
-import {useServerState} from '..'
+import {useServerState} from '@glue/react'
 
 export default () => {
   const {value} = useServerState('magic')

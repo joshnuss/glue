@@ -29,11 +29,11 @@ export default function() {
 }
 ```
 
-Instead of storing state in the local browser's memory with `useState()`, we can switch to server-side state by simply swapping `useState()` to the super-powered `useServerState()`: 
+Instead of storing state in the local browser's memory with `useState()`, we can switch to server-side state by simply swapping `useState()` to `useServerState()`: 
 
 ```js
 import React from 'react'
-import useServerState from '../useServerState'
+import {useServerState} from '@glue/react'
 
 export default function() {
   const {count, increment, decrement} = useServerState('counter', {sync: true})
