@@ -24,7 +24,7 @@
 
     <%= render "analytics.html" %>
 
-    <script id="hooks" type="application/json"><%= hooks_config() %></script>
+    <script id="hooks" type="application/json"><%= Glue.View.hooks_config(:demo) %></script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
