@@ -7,7 +7,7 @@ export function init() {
     channel = socket.channel("hook:lobby")
 
     channel.join()
-      .receive("ok", resolve)
+      .receive("ok", () => resolve(channel))
       .receive("timeout", () => reject('timeout'))
       .receive("error", error => reject(error))
   })
