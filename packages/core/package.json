@@ -8,7 +8,7 @@
   },
   "author": "Josh Nussbaum",
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
     "phoenix": "^1.4.9"
   }
 }

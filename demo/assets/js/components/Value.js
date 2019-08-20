@@ -1,5 +1,5 @@
 import React from 'react'
-import useServerState from '../useServerState'
+import {useServerState} from '@glue/react'
 
 export default function() {
   const {value} = useServerState('random')

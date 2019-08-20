@@ -1,5 +1,5 @@
 import React from 'react'
-import useServerState from '../useServerState'
+import {useServerState} from '@glue/react'
 
 const Pair = ({id, value, onRemove}) => {
   const confirmRemove = () => {

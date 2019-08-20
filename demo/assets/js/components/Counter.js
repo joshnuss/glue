@@ -1,5 +1,5 @@
 import React from 'react'
-import useServerState from '../useServerState'
+import {useServerState} from '@glue/react'
 
 function randomNumber() {
   return Math.floor(Math.random()*100)
