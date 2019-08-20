@@ -1,0 +1,21 @@
+{
+  "name": "@glue/react",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-file index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Nussbaum",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "dependencies": {
+    "react": "^16.9.0"
+  }
+}
