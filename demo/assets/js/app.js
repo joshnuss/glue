@@ -16,7 +16,7 @@ import 'phoenix_html'
 // Local files can be imported directly using relative paths, for example:
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {init} from './channel'
+import {init} from '@glue/core'
 import Counter from './components/Counter'
 import Value from './components/Value'
 import Dictionary from './components/Dictionary'

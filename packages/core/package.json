@@ -2,9 +2,8 @@
   "name": "@glue/core",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "build": "babel src --out-file index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Josh Nussbaum",

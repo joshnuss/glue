@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/runtime": "^7.5.5",
+    "@glue/core": "file:../../packages/core",
     "@glue/react": "file:../../packages/react",
     "font-awesome": "^4.7.0",
     "phoenix": "file:../deps/phoenix",

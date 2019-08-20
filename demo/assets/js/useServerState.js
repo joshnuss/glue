@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {call, subscribe, unsubscribe} from './channel'
+import {call, subscribe, unsubscribe} from '@glue/core'
 
 const hooks = JSON.parse(document.querySelector('script#hooks').innerHTML)
 const actors = new Map()
