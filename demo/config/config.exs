@@ -8,11 +8,11 @@
 use Mix.Config
 
 # Configures the endpoint
-config :phx_hooks, PhxHooksWeb.Endpoint,
+config :demo, DemoWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "6rIwsZ0cDNSH9UOkP4oJ9Xv4cuHxKg6N1Cymoqzo5iWUEGxwQVJGyHWENCt3EMgY",
-  render_errors: [view: PhxHooksWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: PhxHooks.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: DemoWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Demo.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

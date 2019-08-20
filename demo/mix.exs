@@ -1,9 +1,9 @@
-defmodule PhxHooks.MixProject do
+defmodule Demo.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :phx_hooks,
+      app: :demo,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule PhxHooks.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PhxHooks.Application, []},
+      mod: {Demo.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

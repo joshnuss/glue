@@ -1,14 +1,14 @@
 use Mix.Config
 
-config :phx_hooks, :hooks, %{
+config :demo, :hooks, %{
   random: %{
-    mod: PhxHooks.Random,
+    mod: Demo.Random,
     access: %{
       action: :value
     }
   },
   counter: %{
-    mod: PhxHooks.Counter,
+    mod: Demo.Counter,
     access: %{
       action: :get,
       label: :count,
@@ -17,7 +17,7 @@ config :phx_hooks, :hooks, %{
     calls: [:increment, :decrement, :update]
   },
   dictionary: %{
-    mod: PhxHooks.Dictionary,
+    mod: Demo.Dictionary,
     access: %{
       action: :value,
       default: %{}
