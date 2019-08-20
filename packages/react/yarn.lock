@@ -1795,11 +1795,6 @@ path-parse@^1.0.6:
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
 
-phoenix@^1.4.9:
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/phoenix/-/phoenix-1.4.9.tgz#0e251514af9627d61924ce9194e6e414f392b58d"
-  integrity sha512-x7UMemlq0w03S0R3fmklkUuYhjPXC6K2FXz6q7oBbUw17LIAYexiuFaOxPk/pMWSX69AZPZlQeEHytnIyTAw/w==
-
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"

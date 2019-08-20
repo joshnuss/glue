@@ -8,5 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Josh Nussbaum",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "phoenix": "^1.4.9"
+  }
 }
