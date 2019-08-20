@@ -16,5 +16,8 @@
     "@babel/preset-react": "^7.0.0",
     "phoenix": "^1.4.9",
     "react": "^16.9.0"
+  },
+  "dependencies": {
+    "@glue/core": "../core"
   }
 }
