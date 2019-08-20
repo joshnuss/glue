@@ -1,6 +1,6 @@
-defmodule DemoWeb.Generator do
-  defmacro generate_hooks() do
-    hooks = Application.get_env(:demo, :hooks)
+defmodule Glue.Generator do
+  defmacro generate_hooks(app) do
+    hooks = Application.get_env(app, :hooks)
 
     Enum.map(hooks, fn {key, config} ->
       access_name = "#{key}:#{config.access.action}"

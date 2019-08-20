@@ -1,6 +1,6 @@
 defmodule DemoWeb.HookChannel do
   use DemoWeb, :channel
-  import DemoWeb.Generator
+  import Glue.Generator
 
   def join("hook:lobby", payload, socket) do
     if authorized?(payload) do
@@ -10,7 +10,7 @@ defmodule DemoWeb.HookChannel do
     end
   end
 
-  generate_hooks()
+  generate_hooks(:demo)
 
   # Add authorization logic here as required.
   defp authorized?(_payload) do
