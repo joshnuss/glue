@@ -20,10 +20,12 @@ import {init} from '@glue/core'
 import Counter from './components/Counter'
 import Value from './components/Value'
 import Dictionary from './components/Dictionary'
+import ArrayComponent from './components/Array'
 
 const apps = {
   "counter-app": Counter,
   "read-only-app": Value,
+  "array-app": ArrayComponent,
   "dictionary-app": Dictionary
 }
 

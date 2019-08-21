@@ -16,6 +16,15 @@ config :demo, :hooks, %{
     },
     calls: [:increment, :decrement, :update]
   },
+  array: %{
+    mod: Demo.Array,
+    access: %{
+      action: :value,
+      label: :array,
+      default: []
+    },
+    calls: [:push, :get, :del, :clear]
+  },
   dictionary: %{
     mod: Demo.Dictionary,
     access: %{

@@ -11,6 +11,7 @@ defmodule Demo.Application do
       # Start the endpoint when the application starts
       DemoWeb.Endpoint,
       Demo.Counter,
+      Demo.Array,
       Demo.Dictionary
     ]
 
