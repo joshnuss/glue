@@ -18,7 +18,7 @@ const Item = ({value, onRemove}) => {
 
 const Items = ({array, onDelete}) => {
   return array.map((value, index) =>
-    <Item key={value} value={value} onRemove={() => onDelete(index)}/>
+    <Item key={index} value={value} onRemove={() => onDelete(index)}/>
   )
 }
 
