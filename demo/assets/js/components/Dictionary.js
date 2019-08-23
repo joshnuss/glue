@@ -71,7 +71,7 @@ export default function() {
 
       {pairs.length > 0 && <a onClick={() => clear()}>clear</a>}
 
-      <pre><code>{JSON.stringify(value)}</code></pre>
+      <pre><code>{JSON.stringify(value, null, 2)}</code></pre>
     </div>
  )
 }

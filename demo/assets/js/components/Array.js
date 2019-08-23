@@ -66,7 +66,7 @@ export default function() {
 
       {array.length > 0 && <a onClick={() => clear()}>clear</a>}
 
-      <pre><code>{JSON.stringify(array)}</code></pre>
+      <pre><code>{JSON.stringify(array, null, 2)}</code></pre>
     </div>
  )
 }
