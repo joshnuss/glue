@@ -56,11 +56,11 @@ export default function() {
           <thead>
             <tr>
               <th>Key</th>
-              <th colspan="2">Value</th>
+              <th colSpan="2">Value</th>
             </tr>
           </thead>
           <tbody>
-            {pairs.length === 0 && <tr><td colspan="3">No entries found.</td></tr>}
+            {pairs.length === 0 && <tr><td colSpan="3">No entries found.</td></tr>}
 
             <Pairs pairs={pairs} onDelete={del}/>
 
